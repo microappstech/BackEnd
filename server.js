@@ -2,6 +2,7 @@ const express = require('express')
 const users = require("./rootes/users")
 const mongoose = require("mongoose")
 const cors = require('cors')
+ const jobs = require('./rootes/jobs')
 // const router = express.Router()
 const app = express()
 app.use(cors())
@@ -10,6 +11,7 @@ app.get("/info",(req,res)=>{
     res.send('hello ')
 })
 app.use("/user",users)
+app.use("/job",jobs)
 
 // string connectio
 mongoose.connect("mongodb+srv://stunearyou:QoCbxj3fmrNbWgAX@stunearyoucluster.owle6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
