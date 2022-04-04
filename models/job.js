@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-const { Schema } = require('./job')
 
 
 const Schema = mongoose.Schema
@@ -29,5 +28,5 @@ const Schema = mongoose.Schema
  },
 
  })
- const job = mongoose.model('job',jobSchema)
-  module.exports= job
+ const Job = mongoose.model('job',jobSchema)
+  module.exports= Job

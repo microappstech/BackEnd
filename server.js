@@ -3,10 +3,14 @@ const users = require("./rootes/users")
 const mongoose = require("mongoose")
 const cors = require('cors')
  const jobs = require('./rootes/jobs')
-// const router = express.Router()
+const bodyParser = require('body-parser')
+
+
+
 const app = express()
 app.use(cors())
 app.use(express.json())
+
 app.get("/info",(req,res)=>{
     res.send('hello ')
 })
@@ -27,6 +31,6 @@ mongoose.connect("mongodb+srv://stunearyou:QoCbxj3fmrNbWgAX@stunearyoucluster.ow
 
 
 app.listen(3030,()=>{
-    console.log("app runnig on 3030")
+    console.log("app runnig on https://127.0.0.1:3030")
 
 })
