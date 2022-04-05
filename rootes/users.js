@@ -21,7 +21,7 @@ router.get("/:username", async (req,res)=>{
 })
 
 // add user 
-router.post('/register', async (req,res)=>{
+router.post('/sign-up', async (req,res)=>{
     let user = new User()
 
     user.full_name = req.body.full_name
