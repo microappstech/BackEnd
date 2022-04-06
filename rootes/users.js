@@ -12,7 +12,7 @@ router.get('/', async (req,res)=>{
 })
 // get user by ID 
 router.get("/:username", async (req,res)=>{
-    const username = req.params.username;
+
     let user = await User.find((obj)=>{obj.name == username})
     if(user){
         res.send(user)
@@ -51,27 +51,16 @@ router.post('/auth',(req,res)=>{
 
 
 // get upadate user by ID 
-router.get("/update/:username", async (req,res)=>{
+router.patch("/update/:id", async (req,res)=>{
     
-    let user = await User.findOne( req.params.username)
-    if(user){
-
-        user.full_name = req.body.full_name
-        user.phone = req.body.phone
-        user.email = req.body.email
-        user.username= req.body.username
-        user.password=req.body.password
-        user.phone=req.body.phone
-        user.description=req.body.description
-        user.github=req.body.github
-        user.avatar=req.body.avatar
-
+    let user = await User.findById( req.params.id)
         try {
-            await user.save()
-            res.send(" update")
-            }
-         catch (error) {
-            res.send(error)
-        }}
+            Object.assign(user,req.body);
+            user.save()
+            res.send({Data:user});
+        } catch  {
+            res.status(404).send({Error:"user not found"})
+            
+        }
 })
 module.exports = router
