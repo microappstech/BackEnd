@@ -13,7 +13,7 @@ router.get('/', async (req,res)=>{
 // get user by ID 
 router.get("/:username", async (req,res)=>{
 
-    let user = await User.find((obj)=>{obj.name == username})
+    let user = await User.find(req.params.username)
     if(user){
         res.send(user)
     }
@@ -35,13 +35,13 @@ router.post('/sign-up', async (req,res)=>{
     user.avatar=req.body.avatar
     try {
         await user.save()
-        res.send("Success")
+        res.send(user)
         }
      catch (error) {
         res.send(error)
     }
 })
-
+  
 
 
 // auth user
@@ -62,5 +62,21 @@ router.patch("/update/:id", async (req,res)=>{
             res.status(404).send({Error:"user not found"})
             
         }
+})
+
+
+
+// delete user
+
+
+router.delete("/delete/:id",async (req,res)=>{
+    try{
+        let user = await User.findById(req.body.params);
+        await user.remove();
+        res.send({Data:true})
+    }
+    catch{
+        res.status(404).send({error:"cannot delet the user!!!"})
+    }
 })
 module.exports = router
