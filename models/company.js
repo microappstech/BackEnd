@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
- const companySchema= mongoose.Schema({
+ const Schema = mongoose.Schema
+
+
+ const companySchema=  new Schema({
      picture:{
          type:String,
          default:""
@@ -20,7 +22,12 @@ const Schema = mongoose.Schema
     github:{
         type:String,
         default:""
+    },
+    jobsPosted:{
+      type:Number,
+      default:null
     }
+    
 
  })
  const Company = mongoose.model('company',companySchema)
