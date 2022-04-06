@@ -8,9 +8,21 @@ const UserSchema = new Schema({
         type:String,
         required:true
     },
+    full_name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
     avatar:{
         type:String,
-        default:""
+        default:"https://avatars.githubusercontent.com/u/1?v=4"
     },
     github:{
         type:String
@@ -21,32 +33,14 @@ const UserSchema = new Schema({
     phone:{
         type:String
     },
-    email:{
-        type:String,
-        required:true
-    },
-    full_name:{
-        type:String,
-        required:true
-    },
-
-    password:{
-        type:String,
-        required:true
-    },
     field:{
-        type:String
+        type:String 
     },
     created_at:{
         type:Date,
         default:Date.now
     }
-    
-
-
-
 })
-
 
 
 
