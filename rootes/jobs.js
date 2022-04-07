@@ -22,5 +22,14 @@ router.post('/create-job', async (req,res)=>{
         res.send(error)
     }
 })
+//filter
+router.get("/job", async (req,res)=>{
+    const tittle = req.params.tittle;
+    let job = await job.find((obj)=>{obj.name == tittle})
+    if(job){
+        res.send(job)
+    }
+
+})
 
 module.exports = router

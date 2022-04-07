@@ -1,8 +1,11 @@
 const express = require('express')
 const users = require("./rootes/users")
 const mongoose = require("mongoose")
+const jobs = require('./rootes/jobs')
+const companies = require('./rootes/companies')
 const cors = require('cors')
- const jobs = require('./rootes/jobs')
+
+ 
 
 
 
@@ -13,12 +16,12 @@ app.use(express.json())
 app.get("/info",(req,res)=>{
     res.send('hello ')
 })
-
 app.use("/user",users)
 app.use("/job",jobs)
 
-// string connectio
+app.use('/company',companies)
 
+// string connectio
 mongoose.connect("mongodb+srv://stunearyou:QoCbxj3fmrNbWgAX@stunearyoucluster.owle6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 .then(()=>{
     console.log('app connected')
@@ -26,13 +29,6 @@ mongoose.connect("mongodb+srv://stunearyou:QoCbxj3fmrNbWgAX@stunearyoucluster.ow
 .catch((error)=>{
     console.log(error)
 })
-
-
-
-
-
-
-
 
 
 
